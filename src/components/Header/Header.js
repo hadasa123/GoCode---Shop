@@ -1,21 +1,24 @@
 import "./Header.css";
-function Header() {
+import React from 'react';
+
+function Header({ myCategories, filterProducts }) {
   return (
     <nav class="product-filter">
-    <h1>Jackets</h1>
+    <h1>Products</h1>
 
     <div class="sort">
       <div class="collection-sort">
         <label>Filter by:</label>
-        <select>
-          <option value="/">All Jackets</option>
-          <option value="/">2016</option>
-          <option value="/">jacket</option>
-          <option value="/">Jackets</option>
-          <option value="/">layers</option>
-          <option value="/">Obermeyer</option>
-          <option value="/">Roxy</option>
-          <option value="/">womens</option>
+
+        <select onChange={(e) => {filterProducts(e.target.value);}}>
+            
+            {myCategories.map((category) => (
+            <option value="/">{category}</option>
+            ))}
+          {/* <option value="/">men's clothing</option>
+          <option value="/">jewelery</option>
+          <option value="/">electronics</option>
+          <option value="/">women's clothing</option> */}
         </select>
       </div>
 
