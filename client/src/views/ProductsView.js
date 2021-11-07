@@ -10,8 +10,7 @@ function ProductsView() {
   const [productsDynamicList, setProductsDynamicList] = useState(null);
   const [allProductsList, setAllProductsList] = useState([]);
   useEffect(() => {
-    //https://fakestoreapi.com/products
-    fetch("api/products")
+    fetch("/api/products")
       .then((res) => {
         return res.json();
       })

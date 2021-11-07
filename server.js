@@ -75,9 +75,10 @@ app.get("*", (req, res) => {
 const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
 
 mongoose.connect(
+  // mongodb+srv://hadasa9096:<password>@cluster0.totmk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
   // "mongodb://localhost/gocode_shop",
-  //   "mongodb+srv://hadasa9096:hadasa9096@cluster0.totmk.mongodb.net/gocode_shop?retryWrites=true&w=majority",
   `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,
+
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     app.listen(port, () => {
