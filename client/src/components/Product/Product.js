@@ -32,7 +32,7 @@ function Product({ id, title, price, description, category, image }) {
   const ProductRemoval = () => {
     let newProductsList = [];
     // If exist
-    let findIndex = productsInCart.findIndex((product) => product.id === id);
+    let findIndex = productsInCart.findIndex((pro) => pro.id === id);
     let isNeedDelete = false;
     if (findIndex > -1) {
       //exists
@@ -92,34 +92,3 @@ function Product({ id, title, price, description, category, image }) {
   );
 }
 export default Product;
-// import "./Product.css";
-// import
-// function Product({ image, id, title, price, description, category }) {
-//   const [productsInCart, setProductsInCart] = useContext(MyContext);
-//     const getAmount = () => {
-//         let findProduct = productsInCart.find((product) => product.id === id)
-//         if(findProduct) return findProduct.amount;
-//         return ''
-//     }
-//   return (
-//     <div className="product-card">
-//       <div className="product-image">
-//         <img src={image} alt={title} />
-//       </div>
-//       <div className="product-info">
-//         {id}
-//         <br />
-//         {title}
-//         <br />
-//         {price}
-//         <br />
-
-//         {description}
-//         <br />
-//         {category}
-//         <br />
-//       </div>
-//     </div>
-//   );
-// }
-// export default Product;

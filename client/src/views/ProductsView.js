@@ -24,7 +24,6 @@ function ProductsView() {
       });
   }, []);
   const filterByCategory = (category) => {
-    console.log("hadasa");
     if (category === "/") {
       setProductsList(allProductsList);
     } else {

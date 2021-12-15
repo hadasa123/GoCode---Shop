@@ -18,7 +18,6 @@ export default function NativeSelectDemo(props) {
             id: "uncontrolled-native",
           }}
           onChange={(e) => {
-            console.log(e.target.value);
             props.filterProducts(e.target.value);
           }}
         >

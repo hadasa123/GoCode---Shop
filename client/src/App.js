@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import React from "react";
 import MyContext from "./MyContext";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./views/Home";
 import ProductsView from "./views/ProductsView";
 import ProductView from "./views/ProductView";
+import Auth from "./views/Auth/Auth";
 function App() {
   const [productsInCart, setProductsInCart] = useState([]);
   return (
@@ -21,11 +22,17 @@ function App() {
               <li>
                 <Link to="/productsView">Products</Link>
               </li>
+              <li>
+                <Link to="/Auth">Auth</Link>
+              </li>
             </ul>
           </nav>
           <Switch>
             <Route path="/productsView">
               <ProductsView />
+            </Route>
+            <Route path="/Auth">
+              <Auth />
             </Route>
             <Route path="/productView/:id">
               <ProductView />
