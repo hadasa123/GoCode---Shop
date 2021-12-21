@@ -79,7 +79,6 @@ const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
 
 const URL = `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`;
 
-console.log("URL", URL);
 const initProducts = () => {
   Product.findOne((err, product) => {
     if (!product) {
