@@ -7,7 +7,7 @@ function Products({ products }) {
         <Product
           key={pro.id}
           image={pro.image}
-          id={pro.id}
+          id={pro._id}
           amount={pro.amount}
           title={pro.title}
           price={pro.price}

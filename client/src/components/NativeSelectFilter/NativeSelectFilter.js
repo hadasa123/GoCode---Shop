@@ -3,8 +3,7 @@ import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
-
-export default function NativeSelectDemo(props) {
+export default function NativeSelectDemo({ filterProducts, Categories }) {
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
@@ -18,11 +17,16 @@ export default function NativeSelectDemo(props) {
             id: "uncontrolled-native",
           }}
           onChange={(e) => {
-            props.filterProducts(e.target.value);
+            if (e.target.value === "All Categories") {
+              filterProducts(e.target.value);
+            } else {
+              filterProducts(e.target.value);
+            }
           }}
         >
-          <option value={10}>All the products</option>
-          {props.Categories.map((category) => (
+          <option value={"All Categories"}> All the products</option>
+
+          {Categories.map((category) => (
             <option value={category}>{category}</option>
           ))}
         </NativeSelect>

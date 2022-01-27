@@ -3,7 +3,6 @@ import * as React from "react";
 import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
 import { useState } from "react";
-import RangeSlider from "../RangeSlider/RangeSlider";
 import NativeSelectDemoSort from "../NativeSelectSort/NativeSelectSort";
 import NativeSelectDemoFilter from "../NativeSelectFilter/NativeSelectFilter";
 
@@ -22,7 +21,6 @@ function Header({ Categories, filterProducts, filterPrices }) {
       </div>
       <div className="collection-sort">
         <div class="collection-sort">
-          <label>Filter by:</label>
           <NativeSelectDemoFilter
             filterProducts={filterProducts}
             Categories={Categories}

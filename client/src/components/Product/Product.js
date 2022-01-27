@@ -1,84 +1,72 @@
 import { useContext } from "react";
 import MyContext from "../../MyContext";
 import Button from "@mui/material/Button";
+import MyCard from "../MyCard/MyCard";
 
 import "./Product.css";
 import { Link } from "react-router-dom";
-function Product({ id, title, price, description, category, image }) {
-  const [productsInCart, setProductsInCart] = useContext(MyContext);
+import { Card } from "@mui/material";
+function Product({ id, title, price, description, category, image, amount }) {
+  const [cart, setCart] = useContext(MyContext);
 
   const getAmount = () => {
-    let pro = productsInCart.find((product) => product.id === id);
+    let pro = cart.find((product) => product.id === id);
     if (pro) return pro.amount;
     return 0;
   };
 
   const AddingProduct = () => {
     let newCart = [];
-    let productIndex = productsInCart.findIndex((pro) => pro.id === id);
-    if (productIndex > -1) {
-      newCart = productsInCart.map((pro) => {
+    const pIndex = cart.findIndex((pro) => pro.id === id);
+    if (pIndex > -1) {
+      newCart = cart.map((pro) => {
         if (pro.id === id) {
           pro.amount++;
         }
         return pro;
       });
     } else {
-      newCart = [...productsInCart, { id, title, price, image, amount: 1 }];
+      newCart = [...cart, { id, title, price, image, amount: 1 }];
     }
-    // console.log(111, newCart);
-    setProductsInCart(newCart);
+    setCart(newCart);
   };
   const ProductRemoval = () => {
     let newProductsList = [];
-    // If exist
-    let findIndex = productsInCart.findIndex((pro) => pro.id === id);
-    let isNeedDelete = false;
+    let findIndex = cart.findIndex((pro) => pro.id === id);
+    let del = false;
     if (findIndex > -1) {
-      //exists
-      newProductsList = productsInCart.map((product) => {
+      newProductsList = cart.map((product) => {
         if (product.id === id) {
           if (product.amount > 1) {
             product.amount--;
           } else {
-            // delete from list
-            isNeedDelete = true;
+            del = true;
           }
         }
         return product;
       });
-      if (isNeedDelete) {
-        newProductsList = productsInCart.filter((product) => product.id !== id);
+      if (del) {
+        newProductsList = cart.filter((product) => product.id !== id);
       }
     } else {
-      // not exists
-      newProductsList = [...productsInCart];
+      newProductsList = [...cart];
     }
-    setProductsInCart(newProductsList);
+    setCart(newProductsList);
   };
   return (
     <div className="product-card ">
-      <Link to={`/product/${id}`}>
-        <div className="product-image">
-          <img alt="" src={image} />
-        </div>
-        <div className="product-info">
-          <h5>{title}</h5>
-
-          <h6>{`$ ${price}`}</h6>
-        </div>
-      </Link>
-      <h5>{description}</h5>
+      <Link to={`/product/${id}`}></Link>
+      <MyCard
+        key={id}
+        image={image}
+        id={id}
+        amount={amount}
+        title={title}
+        price={price}
+        description={description}
+        category={category}
+      />
       <div>
-        <Button
-          varient="contained"
-          onClick={() => {
-            AddingProduct();
-          }}
-        >
-          +
-        </Button>
-        <span>{getAmount()}</span>
         <Button
           varient="contained"
           onClick={() => {
@@ -86,6 +74,15 @@ function Product({ id, title, price, description, category, image }) {
           }}
         >
           -
+        </Button>
+        <span>{amount > 0 ? amount : getAmount()}</span>
+        <Button
+          varient="contained"
+          onClick={() => {
+            AddingProduct();
+          }}
+        >
+          +
         </Button>
       </div>
     </div>

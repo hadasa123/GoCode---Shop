@@ -3,27 +3,26 @@ import { useState } from "react";
 import React from "react";
 import MyContext from "./MyContext";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
-import Home from "./views/Home";
+//import Home from "./views/Home";
 import ProductsView from "./views/ProductsView";
 import ProductView from "./views/ProductView";
-import Auth from "./views/Auth/Auth";
+//import Auth from "./views/Auth/Auth";
+//import { Card } from "@mui/material";
+import Admin from "./components/admin/admin";
 function App() {
-  const [productsInCart, setProductsInCart] = useState([]);
+  const [cart, setCart] = useState([]);
+
   return (
     <Router>
-      <MyContext.Provider value={[productsInCart, setProductsInCart]}>
+      <MyContext.Provider value={[cart, setCart]}>
         <div className="App">
           <nav>
             <ul>
               <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
                 <Link to="/productsView">Products</Link>
               </li>
               <li>
-                <Link to="/Auth">Auth</Link>
+                <Link to="/Admin">Admin</Link>
               </li>
             </ul>
           </nav>
@@ -31,14 +30,11 @@ function App() {
             <Route path="/productsView">
               <ProductsView />
             </Route>
-            <Route path="/Auth">
-              <Auth />
-            </Route>
             <Route path="/productView/:id">
               <ProductView />
             </Route>
-            <Route path="/">
-              <Home />
+            <Route path="/Admin">
+              <Admin />
             </Route>
           </Switch>
         </div>

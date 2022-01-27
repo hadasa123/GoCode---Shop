@@ -13,10 +13,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mui/icons-material": "^5.2.5",
+    "@mui/material": "^5.2.5",
+    "@mui/styled-engine-sc": "^5.1.0",
+    "@mui/styles": "^5.2.3",
+    "@mui/x-data-grid": "^5.2.1",
+    "@mui/x-data-grid-generator": "^5.2.1",
+    "@mui/x-data-grid-pro": "^5.2.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongoose": "^6.0.12",
-    "nodemon": "^2.0.14"
+    "nodemon": "^2.0.14",
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "concurrently": "^6.3.0"

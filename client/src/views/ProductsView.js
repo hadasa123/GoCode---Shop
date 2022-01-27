@@ -1,9 +1,7 @@
 import Header from "../components/Header/Header";
 import Products from "../components/Products/Products";
-import Cart from "../components/Cart/Cart";
 import { useState, useEffect } from "react";
 import TemporaryDrawer from "../components/TemporaryDrawer/TemporaryDrawer";
-
 function ProductsView() {
   const [categoriesList, setCategoriesList] = useState([]);
   const [productsList, setProductsList] = useState([]);
@@ -24,8 +22,9 @@ function ProductsView() {
       });
   }, []);
   const filterByCategory = (category) => {
-    if (category === "/") {
+    if (category === "All Categories") {
       setProductsList(allProductsList);
+      setProductsDynamicList(allProductsList);
     } else {
       let filteredProducts = allProductsList.filter(
         (product) => product.category === category
@@ -45,7 +44,6 @@ function ProductsView() {
         (product) => product.price >= price[0] && product.price <= price[1]
       );
     }
-
     setProductsList(filteredProducts);
   };
   return (

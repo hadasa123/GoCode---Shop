@@ -19,7 +19,6 @@ const productSchema = new mongoose.Schema({
 const Product = mongoose.model("Product", productSchema);
 //get products
 app.get("/api/products", (req, res) => {
-  console.log("/api/products");
   const { title } = req.query;
   Product.find((err, products) => {
     if (title) {
@@ -30,6 +29,9 @@ app.get("/api/products", (req, res) => {
     res.send(products);
   });
 });
+// app.get("/api/notes", (req, res) => {
+//   res.JSON(notes);
+// });
 
 // get specific product
 app.get("/api/product/:id", (req, res) => {
@@ -75,6 +77,7 @@ app.delete("/api/product/:id", (req, res) => {
 app.get("*", (req, res) => {
   res.sendFile(__dirname + "/client/build/index.html");
 });
+
 const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
 
 const URL = `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`;
